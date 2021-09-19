@@ -10,21 +10,16 @@ const initialState: IState = {
 
 interface IAction {
     type: string;
-    payload: any;
+    payload: <T>(state: T) => T;
 }
 
-type TReducer = (arg1: IState, arg2: IAction) => IState;
-
-export const mainReducer: TReducer = (state = initialState, { type, payload }) => {
-    switch (type) {
-        case 'ADD':
-            return {...state, fields: [...state.fields, payload]}
-        case 'DEL':
-            return {fields: state.fields.filter(({ id }:IField) => id !== payload.id)}
-        case 'FETCH_STATE':
-            return { ...payload}
-        default:
-            return state
-    }
+interface IReducer {
+    (arg1: IState, arg2: IAction): IState;
 }
 
+export const MAIN_ACTION_TYPE: string = 'MAIN_ACTION_TYPE'
+
+export const mainReducer: IReducer = (state = initialState, { type, payload }) => {
+    if (typeof payload === 'function' && type == MAIN_ACTION_TYPE) state = payload(state)
+    return state
+}

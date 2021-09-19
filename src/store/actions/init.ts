@@ -1,9 +1,10 @@
 import {Dispatch} from "redux";
 import {Storage} from "../../utils";
+import {MAIN_ACTION_TYPE} from "../reducers/main";
 
 export const initAction = (dispatch: Dispatch) => {
     dispatch({
-        type: 'FETCH_STATE',
-        payload: Storage.getItem()
+        type: MAIN_ACTION_TYPE,
+        payload: () => ({...Storage.getItem()})
     })
 }

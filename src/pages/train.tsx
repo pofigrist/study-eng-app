@@ -1,9 +1,10 @@
 import {useSelector} from "react-redux";
-import {IField, IStore} from "../store/reducers";
 import React, {useCallback, useEffect, useState} from "react";
 import {TrainView} from "../smart-components/train-view";
 import {Comments} from "../smart-components/Comments";
 import {Manage} from "./manage";
+import {IStore} from "../store";
+import {IField} from "../store/reducers/types";
 
 export const TrainPage = () => {
     const [field, setField] = useState<IField>()

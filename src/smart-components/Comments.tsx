@@ -1,5 +1,5 @@
 import { Comment, List } from 'antd';
-import { IComment } from '../store/reducers';
+import {IComment} from "../store/reducers/types";
 
 export const Comments = ({data}:any) => {
     return <List

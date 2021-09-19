@@ -5,12 +5,12 @@ import {TrainPage} from "./pages/train";
 import {Pages} from "./constants";
 import {Header} from "./smart-components/header";
 import {createStore, applyMiddleware} from 'redux';
-import {combinedReducers} from "./store/reducers";
 import {Provider} from 'react-redux'
 import {Wrapper} from "./smart-components/wrapper";
 import { Layout } from "antd";
 import "antd/dist/antd.css";
 import { Manage } from "./pages/manage";
+import {combinedReducers} from "./store";
 const { Content } = Layout;
 
 const middleware = ({dispatch, getState}: any) => (next: any) => (action: any) => typeof action === 'function' ? action(dispatch, getState) : next(action);

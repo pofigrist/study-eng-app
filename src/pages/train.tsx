@@ -1,9 +1,9 @@
 import {useSelector} from "react-redux";
 import {IField, IStore} from "../store/reducers";
-import {FieldsView} from "../smart-components/fields-view";
 import React, {useCallback, useEffect, useState} from "react";
 import {TrainView} from "../smart-components/train-view";
 import {Comments} from "../smart-components/Comments";
+import {Manage} from "./manage";
 
 export const TrainPage = () => {
     const [field, setField] = useState<IField>()
@@ -34,6 +34,6 @@ export const TrainPage = () => {
     return (<div>
         {field && <TrainView {...field} handleCompare={handleCompare} success={success} handleNext={handleNext}/>}
         {field && success && <Comments data={field.comments}/>}
-        <FieldsView/>
+        <Manage/>
     </div>)
 }

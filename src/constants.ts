@@ -1,5 +1,5 @@
 export enum Pages {
     Main = '/',
     Train = '/train',
-    Cache = '/cache'
+    Manage = '/manage'
 }

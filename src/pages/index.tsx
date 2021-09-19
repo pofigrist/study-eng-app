@@ -1,15 +1,10 @@
-import React, {
-    ChangeEvent,
-    useState,
-    useEffect,
-    useRef,
-} from "react";
+import React, { useEffect, useRef } from "react";
 import {useDispatch} from "react-redux";
 import {createAddFieldAction} from "../store/actions/add";
 import {Subject} from "rxjs";
 import {debounceTime, distinctUntilChanged} from "rxjs/operators";
-import {FieldsView} from "../smart-components/fields-view";
 import {Form, Input, Button} from 'antd';
+import { Manage } from "./manage";
 
 
 export const MainPage = () => {
@@ -32,10 +27,7 @@ export const MainPage = () => {
             })
     }, [])
 
-    const onFinish = (v: any) => {
-        console.log(v)
-        valueSubject.current.next(v)
-    };
+    const onFinish = (v: any) => valueSubject.current.next(v);
 
     return <>
         <h1>Create new field!</h1>
@@ -54,6 +46,6 @@ export const MainPage = () => {
                 <Button type="primary" htmlType="submit">Add new case</Button>
             </Form.Item>
         </Form>
-        <FieldsView/>
+        <Manage/>
     </>
 }

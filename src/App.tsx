@@ -10,7 +10,8 @@ import {Provider} from 'react-redux'
 import {Wrapper} from "./smart-components/wrapper";
 import { Layout } from "antd";
 import "antd/dist/antd.css";
-const { Content, Footer } = Layout;
+import { Manage } from "./pages/manage";
+const { Content } = Layout;
 
 const middleware = ({dispatch, getState}: any) => (next: any) => (action: any) => typeof action === 'function' ? action(dispatch, getState) : next(action);
 
@@ -30,15 +31,14 @@ const App = () => (
                     <Route path={Pages.Train}>
                         <TrainPage/>
                     </Route>
-                    <Route path={Pages.Train}>
-                        <TrainPage/>
+                    <Route path={Pages.Manage}>
+                        <Manage/>
                     </Route>
                     <Route path={Pages.Main}>
                         <MainPage/>
                     </Route>
                 </Switch>
                     </Content>
-                    <Footer>Footer</Footer>
                 </Layout>
             </Wrapper>
         </BrowserRouter>

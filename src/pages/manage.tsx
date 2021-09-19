@@ -8,7 +8,7 @@ import {createDelFieldAction} from "../store/actions/del";
 
 export const Manage = () => {
     const dispatch = useDispatch()
-    const fields = useSelector((state: IStore) => state.main.fields)
+    const fields = useSelector((state: IStore) => state?.main?.fields)
 
     const columns = useMemo(() => {
         return [{
@@ -34,9 +34,7 @@ export const Manage = () => {
             width: 100,
             key: 'operation',
             fixed: 'left',
-            render: ({id}: IField) => {
-                return <Button danger onClick={() => dispatch(createDelFieldAction(id))}>Remove</Button>
-            },
+            render: ({id}: IField) => <Button danger onClick={() => dispatch(createDelFieldAction(id))}>Remove</Button>,
         }]
     }, [fields])
     // @ts-ignore

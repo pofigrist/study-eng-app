@@ -13,9 +13,9 @@ interface IAction {
     payload: any;
 }
 
-type IReducer = (arg1: IState, arg2: IAction) => IState;
+type TReducer = (arg1: IState, arg2: IAction) => IState;
 
-export const mainReducer: IReducer = (state = initialState, { type, payload }) => {
+export const mainReducer: TReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case 'ADD':
             return {...state, fields: [...state.fields, payload]}

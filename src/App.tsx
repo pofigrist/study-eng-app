@@ -16,9 +16,6 @@ const { Content } = Layout;
 const middleware = ({dispatch, getState}: any) => (next: any) => (action: any) => typeof action === 'function' ? action(dispatch, getState) : next(action);
 
 const store = createStore(combinedReducers, applyMiddleware(middleware));
-// @ts-ignore
-window.store = store;
-console.log(store.getState())
 
 const App = () => (
     <Provider store={store}>

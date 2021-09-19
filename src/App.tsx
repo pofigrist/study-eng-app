@@ -8,6 +8,9 @@ import {createStore, applyMiddleware} from 'redux';
 import {combinedReducers} from "./store/reducers";
 import {Provider} from 'react-redux'
 import {Wrapper} from "./smart-components/wrapper";
+import { Layout } from "antd";
+import "antd/dist/antd.css";
+const { Content, Footer } = Layout;
 
 const middleware = ({dispatch, getState}: any) => (next: any) => (action: any) => typeof action === 'function' ? action(dispatch, getState) : next(action);
 
@@ -20,8 +23,10 @@ const App = () => (
     <Provider store={store}>
         <BrowserRouter>
             <Wrapper>
+                <Layout>
                 <Header/>
-                <Switch>
+                    <Content style={{ padding: "0 50px" }}>
+                    <Switch>
                     <Route path={Pages.Train}>
                         <TrainPage/>
                     </Route>
@@ -32,6 +37,9 @@ const App = () => (
                         <MainPage/>
                     </Route>
                 </Switch>
+                    </Content>
+                    <Footer>Footer</Footer>
+                </Layout>
             </Wrapper>
         </BrowserRouter>
     </Provider>

@@ -2,11 +2,12 @@ import {combineReducers} from "redux";
 
 type Id = string;
 
-interface IComment {
+export interface IComment {
     title: string
-    value: string;
+    content: string;
     author: string;
     date: string;
+    avatar: null | string;
 }
 
 enum Category {

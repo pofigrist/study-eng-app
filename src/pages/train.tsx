@@ -3,6 +3,7 @@ import {IField, IStore} from "../store/reducers";
 import {FieldsView} from "../smart-components/fields-view";
 import React, {useCallback, useEffect, useState} from "react";
 import {TrainView} from "../smart-components/train-view";
+import {Comments} from "../smart-components/Comments";
 
 export const TrainPage = () => {
     const [field, setField] = useState<IField>()
@@ -16,21 +17,23 @@ export const TrainPage = () => {
         }
     }, [fields])
 
-    const compareValues = useCallback((val: string) => {
+    const handleCompare = useCallback((val: string) => {
         if (val === field?.translate) {
             return setSuccess(true)
         }
+        console.log(field)
+
         return setSuccess(false)
     }, [field])
 
     const handleNext = useCallback(() => {
         setField(fields[Math.floor(Math.random() * fields.length)])
         setSuccess(false)
-    }, [])
+    }, [fields])
 
     return (<div>
-        {field && <TrainView {...field} handleClick={compareValues} success={success}/>}
-        <button disabled={!success} onClick={handleNext}>next</button>
+        {field && <TrainView {...field} handleCompare={handleCompare} success={success} handleNext={handleNext}/>}
+        {field && success && <Comments data={field.comments}/>}
         <FieldsView/>
     </div>)
 }

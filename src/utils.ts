@@ -15,8 +15,13 @@ store.default.fields = store.default.fields.map((field, id) => ({
     image: null,
     comments: [{
         title: 'title',
-        value: 'value',
+        content: 'value',
         author: 'author',
+        date: new Date()
+    },{
+        title: 'title2',
+        content: 'value2',
+        author: 'author2',
         date: new Date()
     }],
     completesTimes: Math.floor(id * Math.random()*10),

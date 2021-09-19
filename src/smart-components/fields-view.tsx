@@ -6,6 +6,7 @@ export const FieldsView = () => {
     const fields = useSelector((state: IStore) => state.main.fields)
 
     return <div>
+        <h2>all fields</h2>
         <ul>
             {fields.map(
                 ({value, id}) => <li key={id}>

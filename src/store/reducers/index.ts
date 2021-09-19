@@ -2,25 +2,40 @@ import {combineReducers} from "redux";
 
 type Id = string;
 
-interface IField {
+interface IComment {
+    title: string
+    value: string;
+    author: string;
+    date: string;
+}
+
+enum Category {
+    base = 'base'
+}
+
+export interface IField {
     id: Id;
     value: string;
+    translate: string;
+    created: string;
+    image: never;
+    comments: IComment[];
+    completesTimes: number;
+    lastCompleted: string;
+    lastFailed: string;
+    booked: boolean;
+    categories: { [n: number]: Category}
 }
 
 interface IState {
     fields: IField[]
 }
 
-interface IAction {
-    type: string;
-    payload: IField
-}
-
 const initialState: IState = {
     fields: []
 }
 
-type IReducer = (arg1: IState, arg2: IAction) => IState;
+type IReducer = (arg1: IState, arg2: any) => IState;
 
 const reducer: IReducer = (state = initialState, { type, payload }) => {
     switch (type) {
@@ -28,6 +43,8 @@ const reducer: IReducer = (state = initialState, { type, payload }) => {
             return {...state, fields: [...state.fields, payload]}
         case 'DEL':
             return {fields: state.fields.filter(({ id }:IField) => id !== payload.id)}
+        case 'FETCH_STATE':
+            return { ...payload}
         default:
             return state
     }

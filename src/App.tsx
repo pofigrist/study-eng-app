@@ -7,6 +7,7 @@ import {Header} from "./smart-components/header";
 import {createStore, applyMiddleware} from 'redux';
 import {combinedReducers} from "./store/reducers";
 import {Provider} from 'react-redux'
+import {Wrapper} from "./smart-components/wrapper";
 
 const middleware = ({dispatch, getState}: any) => (next: any) => (action: any) => typeof action === 'function' ? action(dispatch, getState) : next(action);
 
@@ -18,7 +19,7 @@ console.log(store.getState())
 const App = () => (
     <Provider store={store}>
         <BrowserRouter>
-            <div>
+            <Wrapper>
                 <Header/>
                 <Switch>
                     <Route path={Pages.Train}>
@@ -31,7 +32,7 @@ const App = () => (
                         <MainPage/>
                     </Route>
                 </Switch>
-            </div>
+            </Wrapper>
         </BrowserRouter>
     </Provider>
 );

@@ -1,7 +1,7 @@
 import {Dispatch} from "redux";
 import {IState, MAIN_ACTION_TYPE} from "../reducers/main";
 
-export const createAddFieldAction = (field: string, translate: string) => (dispatch: Dispatch) => {
+export const addNewField = (field: string, translate: string) => (dispatch: Dispatch) => {
     const newField = {
         id: String(Math.random()),
         value: field,

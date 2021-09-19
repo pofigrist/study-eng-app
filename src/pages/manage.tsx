@@ -4,7 +4,7 @@ import {useMemo} from "react";
 import {Button} from 'antd';
 import {IStore} from "../store";
 import {IField} from "../store/reducers/types";
-import {createDelFieldAction} from "../store/actions/del";
+import {removeField} from "../store/actions/del";
 
 export const Manage = () => {
     const dispatch = useDispatch()
@@ -34,7 +34,7 @@ export const Manage = () => {
             width: 100,
             key: 'operation',
             fixed: 'left',
-            render: ({id}: IField) => <Button danger onClick={() => dispatch(createDelFieldAction(id))}>Remove</Button>,
+            render: ({id}: IField) => <Button danger onClick={() => dispatch(removeField(id))}>Remove</Button>,
         }]
     }, [fields])
     // @ts-ignore

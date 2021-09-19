@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import {useDispatch} from "react-redux";
-import {createAddFieldAction} from "../store/actions/add";
+import {addNewField} from "../store/actions/add";
 import {Subject} from "rxjs";
 import {debounceTime, distinctUntilChanged} from "rxjs/operators";
 import {Form, Input, Button} from 'antd';
@@ -24,7 +24,7 @@ export const MainPage = () => {
                 })
             )
             .subscribe(({value, translate}) => {
-                dispatch(createAddFieldAction(value, translate))
+                dispatch(addNewField(value, translate))
             })
     }, [])
 

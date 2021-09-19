@@ -6,6 +6,7 @@ import {debounceTime, distinctUntilChanged} from "rxjs/operators";
 import {Form, Input, Button} from 'antd';
 import { Manage } from "./manage";
 
+type TFormSubject = { value: string; translate: string }
 
 export const MainPage = () => {
     const dispatch = useDispatch()
@@ -27,7 +28,7 @@ export const MainPage = () => {
             })
     }, [])
 
-    const onFinish = (v: any) => valueSubject.current.next(v);
+    const onFinish = (v: TFormSubject) => valueSubject.current.next(v);
 
     return <>
         <h1>Create new field!</h1>

@@ -1,7 +1,7 @@
-import { Comment, List } from 'antd';
+import {Comment, List} from 'antd';
 import {IComment} from "../store/reducers/types";
 
-export const Comments = ({data}:any) => {
+export const Comments = ({data}: { data: IComment[] }) => {
     return <List
         className="comment-list"
         header={`${data.length} replies`}

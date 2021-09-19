@@ -11,11 +11,10 @@ import { Layout } from "antd";
 import "antd/dist/antd.css";
 import { Manage } from "./pages/manage";
 import {combinedReducers} from "./store";
+import thunk from 'redux-thunk';
 const { Content } = Layout;
 
-const middleware = ({dispatch, getState}: any) => (next: any) => (action: any) => typeof action === 'function' ? action(dispatch, getState) : next(action);
-
-const store = createStore(combinedReducers, applyMiddleware(middleware));
+const store = createStore(combinedReducers, applyMiddleware(thunk));
 
 const App = () => (
     <Provider store={store}>
